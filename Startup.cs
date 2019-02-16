@@ -82,6 +82,7 @@ namespace AspNetCoreVueStarter
                      {
                          if (context.Response.StatusCode == (int)HttpStatusCode.OK)
                          {
+                             context.ProtocolMessage.State = options.StateDataFormat.Protect(context.Properties);
                              context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
                              context.Response.Headers["Location"] = context.ProtocolMessage.CreateAuthenticationRequestUrl();
                          }
